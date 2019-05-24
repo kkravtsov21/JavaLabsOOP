@@ -1,0 +1,79 @@
+package laba3;
+
+import java.util.Arrays;
+import java.util.Random;
+import java.util.Scanner;
+
+public class Laba3 {
+    public Laba3() {
+    }
+
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        Random rnd = new Random();
+        System.out.println("Array of incorrect numbers");
+        int[] d = new int[5];
+        int[] b = new int[5];
+        boolean p = true;
+
+        int N;
+        for(N = 0; N < b.length; ++N) {
+            b[N] = rnd.nextInt(10) - 5;
+        }
+
+        for(N = 0; N < d.length; ++N) {
+            d[N] = rnd.nextInt(10) - 5;
+        }
+
+        System.out.println(Arrays.toString(d));
+
+        int Max;
+        for(N = 0; N < b.length; ++N) {
+            for(Max = 0; Max < d.length; ++Max) {
+                if (b[N] == d[Max]) {
+                    p = false;
+                }
+            }
+        }
+
+        if (p) {
+            System.out.println("Array doesn't have incorrect numbers");
+        } else {
+            System.out.println("Incorrect numbers");
+        }
+
+        System.out.println(Arrays.toString(b));
+        System.out.println("Введіть розмірність массиву");
+        N = input.nextInt();
+        Max = 0;
+        int Min = 0;
+        int[][] a = new int[N][N];
+
+        int i;
+        int j;
+        for(i = 0; i < a.length; ++i) {
+            for(j = 0; j < a[i].length; ++j) {
+                a[i][j] = rnd.nextInt(101) - 50;
+            }
+        }
+
+        for(i = 0; i < a.length; ++i) {
+            for(j = 0; j < a[i].length; ++j) {
+                if (Min > a[i][j]) {
+                    Min = a[i][j];
+                }
+
+                if (Max < a[i][j]) {
+                    Max = a[i][j];
+                }
+
+                System.out.print(a[i][j] + "\t");
+            }
+
+            System.out.println();
+        }
+
+        System.out.println("Мінімальне значення: " + Min);
+        System.out.println("Максимальне значення: " + Max);
+    }
+}
